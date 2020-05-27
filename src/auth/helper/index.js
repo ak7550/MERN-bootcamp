@@ -10,7 +10,7 @@ export const signup = user => {
         body: JSON.stringify(user)
     })
         .then(response => {
-            return response.json();
+            return response.json(); // this is the data, we are receiving
         })
         .catch(err => console.log(err));
 };
@@ -26,7 +26,7 @@ export const signin = user => {
         body: JSON.stringify(user)
     })
         .then(response => {
-            return response.json();
+            return response.json(); // this is the data, we are receiving
         })
         .catch(err => console.log(err));
 };

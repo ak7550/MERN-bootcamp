@@ -13,7 +13,7 @@ const Signup = () => {
         success: false
     });
 
-    const { name, email, password, success } = values; // object destructured
+    const { name, email, password, success, error } = values; // object destructured
 
     // check higherOrder functions
     const handleChange = name => event => {
@@ -22,7 +22,7 @@ const Signup = () => {
 
     const onSubmit = event => {
         event.preventDefault();
-        setValues({ ...values, error: false });
+        setValues({ ...values, error: false });        
         signup({ name, email, password }) // this methods automatically sends an request to the server and returns a server side response, that we need to deal accordingly
             .then(data => {
                 if (data.error) {
@@ -91,7 +91,7 @@ const Signup = () => {
     const errorMesssage = () => {
         return (
             <div className="alert alert-danger"
-                style={{ display: success ? "" : "none" }}
+                style={{ display: error ? "" : "none" }}
             >
                 error
             </div>
