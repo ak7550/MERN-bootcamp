@@ -34,7 +34,7 @@ const Menu = ({ history }) => (
                     style={currentTab(history, "/admin/dashboard")} to="/admin/dashboard">Admin Dashboard</Link>
             </li>
             <li className="nav-item">
-                <Link style={currentTab(history, "/user/dashboard")} className="nav-link" to="/user/dashboard">Dashboard</Link>
+                <Link style={currentTab(history, "/user/dashboard")} className="nav-link" to="/user/dashboard">User Dashboard</Link>
             </li>
             {
                 !isAuthenticated() && 
@@ -62,6 +62,8 @@ const Menu = ({ history }) => (
                     </span>
                 </li>
             )}
+
+            
         </ul>
     </div>
 );

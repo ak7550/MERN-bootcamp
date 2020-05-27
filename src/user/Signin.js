@@ -29,7 +29,7 @@ const Signin = () => {
         signin({ email, password }) // this methods automatically sends an request to the server and returns a server side response, that we need to deal accordingly
             .then(data => {
                 if (data.err) {
-                    setValues({ ...values, error: data.err, success: false });
+                    setValues({ ...values, error: data.err, success: false, didRedirect: false });
                 }
                 else {
                     authenticate(data, () => {
@@ -70,14 +70,15 @@ const Signin = () => {
         );
     }
 
+    // still redirecting me to user dashboard if the password is wrong, jwt web token is not being generated
     const performRedirect = () => {
         //TODO: do a redirection here
         if (didRedirect) {
             if (user && user.role === 1) {
-                return <p>redirected to admin, as role is 1 means he is an admin</p>
+                return <Redirect to="/admin/dashboard" />;
             }
             else {
-                return <p>redirect to user dashboard as role is not 1 , means a normal user</p>
+                return <Redirect to="/user/dashboard" />;
             }
         }
         if (isAuthenticated()) {
