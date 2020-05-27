@@ -17,31 +17,33 @@ const Signup = () => {
 
     // check higherOrder functions
     const handleChange = name => event => {
-        setValues({ ...values, error: false, [name]: event.target.value });
+        setValues({ ...values, error: "", [name]: event.target.value });
     };
 
     const onSubmit = event => {
         event.preventDefault();
-        setValues({ ...values, error: false });        
+        setValues({ ...values, error: false });
+        console.log("set values are: " + JSON.stringify(values));
         signup({ name, email, password }) // this methods automatically sends an request to the server and returns a server side response, that we need to deal accordingly
             .then(data => {
-                if (data.error) {
-                    setValues({ ...values, error: data.error, success: false });
+                if (data.err) {
+                    setValues({ ...values, error: data.err, success: false });
                 }
                 else {
+                    // we have a got a good response from the server and signup is successful, 
                     setValues({
                         ...values,
                         name: "",
                         email: "",
                         password: "",
                         error: "",
-                        success: true
+                        success: true,
                     }); //setting the state once again
                     // console.log(`Data that has come back: `+ JSON.stringify(data));
                 }
             })
             .catch(err => {
-                console.log("Error is: " + err);
+                console.log("Error is: " + err+"\n cannot connect to the server.");
             });
     };
 
@@ -93,7 +95,7 @@ const Signup = () => {
             <div className="alert alert-danger"
                 style={{ display: error ? "" : "none" }}
             >
-                error
+                {error}
             </div>
         );
     };
