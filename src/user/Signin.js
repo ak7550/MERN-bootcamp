@@ -28,6 +28,7 @@ const Signin = () => {
         setValues({ ...values, error: false, loading: true });
         signin({ email, password }) // this methods automatically sends an request to the server and returns a server side response, that we need to deal accordingly
             .then(data => {
+                console.log("Response from our beloved server is: "+ JSON.stringify(data));
                 if (data.err) {
                     setValues({ ...values, error: data.err, success: false, didRedirect: false });
                 }
@@ -43,6 +44,7 @@ const Signin = () => {
             })
             .catch(err => {
                 console.log("Error is: " + err); // not possible to reach the server
+                setValues({ ...values, error: err, didRedirect: false, success: false, });
             });
     };
 
@@ -81,9 +83,7 @@ const Signin = () => {
                 return <Redirect to="/user/dashboard" />;
             }
         }
-        if (isAuthenticated()) {
-            return <Redirect to="/" />
-        }
+        if (isAuthenticated()) { return <Redirect to="/" /> }
     }
 
     const loadingMesssage = () => {
