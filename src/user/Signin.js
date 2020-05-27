@@ -71,6 +71,7 @@ const Signin = () => {
     }
 
     const performRedirect = () => {
+        //TODO: do a redirection here
         if (didRedirect) {
             if (user && user.role === 1) {
                 return <p>redirected to admin, as role is 1 means he is an admin</p>
@@ -92,20 +93,28 @@ const Signin = () => {
 
     const loadingMesssage = () => {
         return (
-            loading && (
-                <div className="alert alert-info">
-                    <h2>Loading...</h2>
+            <div className="row">
+                <div className="col-md-6 offset-sm-3 text-left">
+                    {loading && (
+                        <div className="alert alert-info">
+                            <h2>Loading...</h2>
+                        </div>)}
                 </div>
-            )
+            </div>
         ); // if loading is true the 2nd parameter is definately is gonna run and return true
     };
 
     const errorMesssage = () => {
         return (
-            <div className="alert alert-danger"
-                style={{ display: error ? "" : "none" }}
-            >
-                {error}
+            <div className="row">
+                <div className="col-md-6 offset-sm-3 text-left">
+
+                    <div className="alert alert-danger"
+                        style={{ display: error ? "" : "none" }}
+                    >
+                        {error}
+                    </div>
+                </div>
             </div>
         );
     };

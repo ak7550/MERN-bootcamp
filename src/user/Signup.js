@@ -43,7 +43,7 @@ const Signup = () => {
                 }
             })
             .catch(err => {
-                console.log("Error is: " + err+"\n cannot connect to the server.");
+                console.log("Error is: " + err + "\n cannot connect to the server.");
             });
     };
 
@@ -82,20 +82,30 @@ const Signup = () => {
 
     const successMesssage = () => {
         return (
-            <div className="alert alert-sucess"
-                style={{ display: success ? "" : "none" }}
-            >
-                New Account was created sucessfully. Please <Link to="/signin">Login Here</Link>
+            <div className="row">
+                <div className="col-md-6 offset-sm-3 text-left">
+
+                    <div className="alert alert-sucess"
+                        style={{ display: success ? "" : "none" }}
+                    >
+                        New Account was created sucessfully. Please <Link to="/signin">Login Here</Link>
+                    </div>
+                </div>
             </div>
         );
     };
 
     const errorMesssage = () => {
         return (
-            <div className="alert alert-danger"
-                style={{ display: error ? "" : "none" }}
-            >
-                {error}
+            <div className="row">
+                <div className="col-md-6 offset-sm-3 text-left">
+
+                    <div className="alert alert-danger"
+                        style={{ display: error ? "" : "none" }}
+                    >
+                        {error}
+                    </div>
+                </div>
             </div>
         );
     };
