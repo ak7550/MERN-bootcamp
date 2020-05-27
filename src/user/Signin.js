@@ -81,13 +81,7 @@ const Signin = () => {
             }
         }
         if (isAuthenticated()) {
-            // return <Redirect to="/" />
-            return (
-                <div>
-                    <p>Thinking of redirect but according to me it's not a fair decision to send everyinw to home page</p>
-                    <p>user is: {JSON.stringify(user)}success is: {JSON.stringify(success)}</p>
-                </div>
-            );
+            return <Redirect to="/" />
         }
     }
 

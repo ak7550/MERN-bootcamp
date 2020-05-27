@@ -39,7 +39,7 @@ export const authenticate = (data, next) => {
 
 };
 
-// access the window and remove "jwt"
+// access the window and remove "jwt", signout is a middleware
 export const signout = next => {
     if (typeof window !== "undefined") {
         localStorage.removeItem("jwt");
