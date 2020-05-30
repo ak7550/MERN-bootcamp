@@ -174,7 +174,7 @@ const AddProduct = () => {
         <div className="alert alert-success mt-3"
             style={{ display: createdProduct ? "" : "none" }}
         >
-            <h4>{createProduct} is created successfully</h4>
+            <h4>{createdProduct} is created successfully</h4>
         </div>
     )
     const warningMessage = () => (
@@ -195,7 +195,11 @@ const AddProduct = () => {
     const performRedirect = () => {
         console.log("Inside of performredirect, the value is: ", didRedirect);
         
-           didRedirect && setTimeout(() => <Redirect to="/admin/dashboard" />, 2000);
+        didRedirect && setTimeout( function() {
+            console.log("working");
+            //BUG: not working
+            return <Redirect to="/admin/dashboard" />;
+        }, 2000);
         
     }
 
