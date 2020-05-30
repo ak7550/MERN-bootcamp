@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const AdminDashBoard = () => {
     const {
-        user: { name, email, role }
+        user: { name, email }
     } = isAuthenticated(); // return JSON.parse(localStorage.getItem("jwt"));
 
     const adminLeftSide = () => {
@@ -19,6 +19,14 @@ const AdminDashBoard = () => {
                             to="/admin/create/category"
                         >
                             Create Categories
+                        </Link>
+                    </li>
+                    <li className="list-group-item">
+                        <Link
+                            className="nav-link text-success"
+                            to="/admin/manage/category"
+                        >
+                            Manage Categories
                         </Link>
                     </li>
                     <li className="list-group-item">
