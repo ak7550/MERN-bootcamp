@@ -4,6 +4,7 @@ import { API } from '../backEnd';
 import Base from './Base';
 import Card from './Card';
 import { loadCart } from './helper/cartHelper';
+import StripeCheckout from './StripeCheckout';
 
 export default function Cart() {
     const [products, setProducts] = useState([]);
@@ -32,7 +33,10 @@ export default function Cart() {
 
     const loadCheckOut = () => {
         return (
-            <h2>For checkout!!</h2>
+            <StripeCheckout
+                products={products}
+                setReload={setReload}
+            />
         );
     }
 
