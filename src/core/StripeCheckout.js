@@ -58,7 +58,7 @@ export default function StripeCheckout({
     }
     
     const showStripeButton = () => {
-        return isAuthenticated() ? (
+        return (
             <StripeCheckoutButton
                 stripeKey={process.env.REACT_APP_PUBLISHABLEKEY}
                 token={makePayment}
@@ -67,16 +67,12 @@ export default function StripeCheckout({
                 shippingAddress
                 billingAddress
             >
-                <button className="btn btn-success">
+                <button className="btn btn-success my-3">
                     Pay with Stripe
                 </button>
             </StripeCheckoutButton>
 
-        ) : (
-                <Link to="/signin">
-                    <button className="btn-warning btn text-white py-2 px-4 ">Signin</button>
-                </Link>
-            );
+        ) ;
     }
 
 
@@ -84,7 +80,6 @@ export default function StripeCheckout({
 
     return (
         <div>
-            <h3 className="text-white" >Stripe checkout ${getFinalPrice()}</h3>
             {showStripeButton()}
         </div>
     );
