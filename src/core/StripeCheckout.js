@@ -81,6 +81,7 @@ export default function StripeCheckout({
     return (
         <div>
             {showStripeButton()}
+            {API}
         </div>
     );
 }
